@@ -11,7 +11,7 @@ def compute_logits_grid(model, all_x, device):
     return logits.view(config.p, config.p, config.p)
 
 def get_key_frequencies(model, num_freqs=3):
-    [cite_start]"""임베딩 행렬에서 상위 주파수 추출 [cite: 60, 192]"""
+    """임베딩 행렬에서 상위 주파수 추출"""
     W_E = model.token_embed.weight.detach().cpu()[:config.p]
     fft = torch.fft.fft(W_E, dim=0)
     norms = torch.norm(fft, dim=1)
@@ -21,7 +21,7 @@ def get_key_frequencies(model, num_freqs=3):
     return top_k_indices.tolist()
 
 def calculate_spectral_losses(logits_grid, train_labels, all_labels, train_indices, key_freqs, device):
-    [cite_start]"""Restricted(Full) & Excluded(Train) Loss 계산 [cite: 133, 134, 135, 242, 243]"""
+    """Restricted(Full) & Excluded(Train) Loss 계산"""
     p = logits_grid.shape[0]
     fft = torch.fft.fft2(logits_grid, dim=(0, 1))
     
@@ -53,5 +53,5 @@ def calculate_spectral_losses(logits_grid, train_labels, all_labels, train_indic
     return loss_res, loss_exc
 
 def get_weight_norm(model):
-    [cite_start]"""L2 Norm 합 [cite: 136]"""
+    """L2 Norm 합"""
     return sum(p.pow(2).sum().item() for p in model.parameters())

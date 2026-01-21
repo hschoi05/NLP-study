@@ -20,7 +20,7 @@ def main():
     
     # 2. 모델 초기화
     model = GrokkingTransformer(config).to(config.device)
-    [cite_start]optimizer = optim.AdamW(model.parameters(), lr=config.lr, weight_decay=config.weight_decay) # [cite: 157]
+    optimizer = optim.AdamW(model.parameters(), lr=config.lr, weight_decay=config.weight_decay) # [cite: 157]
     criterion = nn.CrossEntropyLoss()
     
     # 3. 데이터 GPU 이동 (미리 이동해둠)
@@ -45,7 +45,7 @@ def main():
         loss = criterion(logits, train_y_d)
         loss.backward()
         
-        # [cite_start]Gradient Clipping [cite: 358]
+        # Gradient Clipping
         torch.nn.utils.clip_grad_norm_(model.parameters(), config.clip_grad)
         optimizer.step()
         

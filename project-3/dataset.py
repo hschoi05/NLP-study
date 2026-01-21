@@ -5,7 +5,7 @@ from config import config
 def create_dataset_strict(p):
     """
     [a, b, =] 형태의 입력과 (a+b)%p 라벨을 생성합니다.
-    [cite_start]마지막 토큰 '='의 인덱스는 p입니다. [cite: 16]
+    마지막 토큰 '='의 인덱스는 p입니다.
     """
     a_vals = torch.arange(p)
     b_vals = torch.arange(p)

@@ -6,14 +6,14 @@ class GrokkingTransformer(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         self.p = cfg.p
-        [cite_start]self.vocab_size = cfg.p + 1 # 0~112 + '='(113) [cite: 156]
+        self.vocab_size = cfg.p + 1 # 0~112 + '='(113)
         self.seq_len = cfg.seq_len
         
         # 임베딩 & 위치 인코딩
         self.token_embed = nn.Embedding(self.vocab_size, cfg.d_model)
         self.pos_embed = nn.Embedding(self.seq_len, cfg.d_model)
         
-        # [cite_start]역공학을 위해 bias=False 설정 [cite: 355]
+        # 역공학을 위해 bias=False 설정
         self.attn = nn.MultiheadAttention(
             cfg.d_model, cfg.num_heads, batch_first=True, bias=False
         )
@@ -36,6 +36,6 @@ class GrokkingTransformer(nn.Module):
         mlp_out = self.mlp_out(mlp_act)
         h = h + mlp_out
         
-        # [cite_start]마지막 토큰(=) 위치의 벡터로 예측 [cite: 156]
+        # 마지막 토큰(=) 위치의 벡터로 예측
         logits = self.unembed(h[:, -1, :])
         return logits
