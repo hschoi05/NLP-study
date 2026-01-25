@@ -95,15 +95,18 @@ In the search bar, type a query like:
 The system will display the most relevant images ranked by similarity score.
 
 ## 🔧 Troubleshooting
+```bash
 OSError: [WinError 1114] DLL initialization failed
 This occurs when the GPU version of PyTorch conflicts with Windows system DLLs.
-
+```
 Fix: Uninstall the current torch version and reinstall the CPU-specific version using the command provided in the Installation section.
 
+```bash
 403 Forbidden or 429 Too Many Requests when downloading images
+```
 Fix: The project uses src/indexer.py with a custom User-Agent header and utilizes the Lorem Picsum API to ensure stable image downloading without being blocked by servers.
 
-📚 Tech Stack
+## 📚 Tech Stack
 Language: Python
 
 Model: OpenAI CLIP (via Hugging Face Transformers)
@@ -114,5 +117,5 @@ UI: Streamlit
 
 Data Handling: PIL (Pillow), NumPy
 
-📝 License
+## 📝 License
 This project is open-source and available under the MIT License.
