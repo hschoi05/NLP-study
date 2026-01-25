@@ -60,9 +60,8 @@ Note for Windows Users: To prevent OSError: [WinError 1114], install the CPU ver
 # 1. Install PyTorch (CPU Version)
 python -m pip install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cpu](https://download.pytorch.org/whl/cpu)
 ```
-
-# 2. Install other requirements
 ```bash
+# 2. Install other requirements
 python -m pip install transformers pillow streamlit numpy requests tqdm
 ```
 🏃‍♂️ How to Run
