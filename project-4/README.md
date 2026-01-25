@@ -29,19 +29,20 @@ project-4/
 └── data/
     ├── images/         # Directory for downloaded images
     └── embeddings.pt   # Saved vector embeddings (cache)
+```
 
-
-🚀 Installation & Setup
+## 🚀 Installation & Setup
 This project is optimized for Windows environments to avoid common DLL/GPU errors.
 
 1. Clone the repository
-Bash
+```bash
 git clone <YOUR_REPOSITORY_URL>
 cd project-4
+```
 2. Create a Virtual Environment (Recommended)
 It is highly recommended to use a virtual environment to keep dependencies clean.
 
-Bash
+```bash
 # Create virtual environment
 python -m venv venv
 
@@ -50,20 +51,26 @@ python -m venv venv
 
 # Activate (Mac/Linux)
 source venv/bin/activate
+```
+
 3. Install Dependencies
 Note for Windows Users: To prevent OSError: [WinError 1114], install the CPU version of PyTorch first.
 
-Bash
+```Bash
 # 1. Install PyTorch (CPU Version)
 python -m pip install torch torchvision torchaudio --index-url [https://download.pytorch.org/whl/cpu](https://download.pytorch.org/whl/cpu)
+```
 
 # 2. Install other requirements
+```bash
 python -m pip install transformers pillow streamlit numpy requests tqdm
+```
 🏃‍♂️ How to Run
 Execute the application using the following command:
 
-Bash
+```bash
 python -m streamlit run app.py
+```
 What happens next?
 
 The app will check for images in data/images.
@@ -74,7 +81,7 @@ It will generate embeddings (vector representations) for these images using CLIP
 
 The Web UI will open in your browser (usually http://localhost:8501).
 
-🖼️ Usage Example
+## 🖼️ Usage Example
 Wait for the indexing process to finish (indicated by the progress bar).
 
 In the search bar, type a query like:
@@ -87,7 +94,7 @@ In the search bar, type a query like:
 
 The system will display the most relevant images ranked by similarity score.
 
-🔧 Troubleshooting
+## 🔧 Troubleshooting
 OSError: [WinError 1114] DLL initialization failed
 This occurs when the GPU version of PyTorch conflicts with Windows system DLLs.
 
